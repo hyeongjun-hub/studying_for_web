@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link href="style.css" rel="stylesheet" />
+    <link
+      rel="shortcut icon"
+      href="https://www.koreatimes.co.kr/www/images/koreatimes.ico?202004"
+    />
+    <style>
+      * {
+      }
+      html {
+        background-color: tomato;
+      }
+      body {
+        background-color: thistle;
+        padding: 10px;
+        margin: 10px;
+      }
+      h1 {
+        color: red;
+        font-size: 20px;
+        font-weight: 200px;
+        font-style: italic;
+      }
+      div {
+      }
+      span {
+        display: inline;
+        background-color: turquoise;
+        margin: 10px;
+      }
+      input {
+        text-align: center;
+        color: tomato;
+      }
+      footer {
+        padding: 15px;
+      }
+      #first {
+        background-color: green;
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+      }
+      #second {
+        background-color: whitesmoke;
+        width: 100px;
+        height: 100px;
+      }
+      #third {
+        background-color: wheat;
+        width: 50px;
+        height: 50px;
+      }
+      .teal {
+        background-color: teal;
+        color: white;
+      }
+      .david {
+        background-color: red;
+        margin: 5px;
+        display: block;
+      }
+    </style>
+    <meta content="my new website" name="description" />
+    <meta charset="utf-8" />
+    <title>Home - My first website.</title>
+  </head>
+  <body>
+    <header>
+      <h1>The HaengJu Times</h1>
+      <p>
+        paragraph
+        lalalalllalalal<mark>!<strong>!!</strong>!!!</mark>lalaalalallala
+      </p>
+    </header>
+    <main>
+      <form>
+        <label for="profile">Profile photo</label>
+        <input id="profile" accept="image/*" type="file" />
+        <label for="website">Website </label>
+        <input id="website" required placeholder="Name" type="url" />
+        <input type="submit" value="Creat Account" />
+
+        <p>
+          body안에 어떤 태그든 id를 포함 할 수 있음. id가 중요한 이유는 id는
+          unique identifier이므로 한 element당 하나의 id가질 수 있음. 즉
+          중복불가 label은 input과 함께 작동해야 함. for의 값과 id의 값이 같으면
+          같은 실행 display가 인라인이면 그 요소는 높이와 너비를 가질 수 없음
+          box는 margin, padding, border 세가지 특징, 브라우저가 자동으로 테두리
+          공간을 줌 margin : box의 border(경계)로부터 바깥에 있는 공간 padding :
+          box의 경계로부터 안쪽에 있는 공간 border: 경계, 별로 안예쁨 한 종류만
+          씀 *{}는 모든 것들을 뜻함 ^d로 여러개 동시에 수정 가능// inline은
+          높이와 너비가 없으므로 위아래 margin을 가질 수 없음. #something :
+          id="something" .something : class="something" 클래스는 동시에 가질 수
+          있음. flexbox의 원칙 : 부모 엘리멘트에 적는다. (default)
+          justify-content: 수평축 align-items: 수직축 viewpoint(screen) height
+          100 = 100퍼센트 화면높이
+        </p>
+        <div id="first">
+          <div id="second">
+            <div id="third"></div>
+          </div>
+        </div>
+        <span class="btn teal">hello</span>
+        <span class="btn">hello</span>
+        <span class="btn teal">hello</span>
+        <span class="btn">hello</span>
+        <span class="btn teal">hello</span>
+        <span class="btn">hello</span>
+      </form>
+    </main>
+    <footer>
+      &copy; 2020 N.C
+      <div class="david">
+        <div class="david">
+          <div class="david"></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
