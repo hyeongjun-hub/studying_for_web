@@ -1,3 +1,5 @@
+<<CSS>>
+
 position: fixed : 화면에 고정, position은 초기에 설정한 공간.
 position: top, left, right, buttom
 다른 레이어로 이동함. fixed의 ex)menu of netflix
@@ -13,3 +15,15 @@ p + span : p 바로 다음 span에 해당
 5.focus within(안쪽) - focused인 자식을 가진 부모에게 적용
 p::selection - 드래그한 문장들 , p::first-letter - 첫 문자
 color: 1.#16진수 2.rgb(,,) 3.rgba(,,,투명도)
+
+<<advanced CSS>>
+
+<transition> : 어떤 상태에서 다른 상태로의 "변화"를 애니메이션으로 만드는 방법.
+state가 없는 요소에 붙어야함. transition: all 1s ease-in-out
+<transformation> : 모양변형, 여러개의 중복가능
+transform : rotateX(n);
+<animation> : 계속 재생
+@keyframes something{   from{}  to{}   }
+*border radius : 50%=원
+<media query> : 사용자의 screen의 사이즈를 알 수 있는 방법
+@media screen and (max-width:npx){ div{조건충족사항} }
