@@ -27,3 +27,5 @@ transform : rotateX(n);
 *border radius : 50%=원
 <media query> : 사용자의 screen의 사이즈를 알 수 있는 방법
 @media screen and (max-width:npx){ div{조건충족사항} }
+
+<<git, github>>
