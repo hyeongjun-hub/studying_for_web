@@ -32,3 +32,7 @@ transform : rotateX(n);
 - repositoy는 자신의 코드가 살고 있는 곳.
 → 코드의 변경내역과 그 히스토리를 갖고 있는 폴더.
 - commit은 기본적으로 시점(pointing time)
+
+<<KoKoa clone>>
+BEM(Block Element Modifier) : id와 class가 아닌 모든 것을 class로 만들어서 한눈에 어떤 속성인지 
+알 수 있게 해줌.
