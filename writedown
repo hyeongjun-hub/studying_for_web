@@ -29,3 +29,6 @@ transform : rotateX(n);
 @media screen and (max-width:npx){ div{조건충족사항} }
 
 <<git, github>>
+- repositoy는 자신의 코드가 살고 있는 곳.
+→ 코드의 변경내역과 그 히스토리를 갖고 있는 폴더.
+- commit은 기본적으로 시점(pointing time)
