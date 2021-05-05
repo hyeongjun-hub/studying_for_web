@@ -36,3 +36,40 @@ transform : rotateX(n);
 <<KoKoa clone>>
 BEM(Block Element Modifier) : id와 class가 아닌 모든 것을 class로 만들어서 한눈에 어떤 속성인지 
 알 수 있게 해줌.
+
+<second screen>
+1. html
+    !을 이용해 기본 form 불러올 수 있음
+    l을 이용해 link form 불러올 수 있음
+    button은 <input type="submit" value="something"/>
+    webpage를 이용해 icon 가져올 수 있음
+        <script>는 body가장 마지막에 붙여넣기
+    <form action="something.html" method="get"(or post)></form>
+        something.html로 이동
+        방식 get : 보안취약 post : backend에서 서버와 통신시 사용
+
+2. CSS
+    body{ font-family: } 로 폰트설정 가능 
+        webpage에서 폰트가져올 때 @import url()
+    임의로 색 설정 시 
+        variable.css만들고  :root{ --somthing:#1234 }
+        @import "variable.css"후 사용할 때 var(--something)
+    모든 기본설정 ( margin, padding, ... )을 없앨 때
+        reset.css에 붙여넣기 후 import
+    가장 많이 쓰이는 것들
+        display : flex;
+        flex-direction : column;
+        margin: 가로 세로;
+        padding: 가로 세로;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    조건이 아닌 것을 설정하고 싶을 때
+        #login-form imput:not([type="submit"]){ }
+    생소한 syntax
+        .status-bar__column:nth-child(2) { }    
+        #login-form input::placeholder{ }
+        cursor : pointer;
+
+
+    
