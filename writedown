@@ -74,12 +74,15 @@ BEM(Block Element Modifier) : id와 class가 아닌 모든 것을 class로 만�
 <third screen>
 1. html
     vsc의 단축키로 nav>ul>li*4>a로 빠르게 nav form 만들 수 있음
-    
+
 2. css
     position: fixed;
         top: 0; or bottom: 0;으로 위치 고정가능
     200px의 box를 만들고 left에 padding 50px을 추가하면 250px의 박스가 된다.
         box-sizing: border-box;로 size늘어나는 걸 막을 수 있음
+    position : absolute로 겹치게 만들 수 있음
+        기준은 부모중 relative한 것 없으면 body
+    
 
 
     
