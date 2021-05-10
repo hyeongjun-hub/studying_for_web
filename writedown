@@ -40,7 +40,7 @@ transform : rotateX(n);
 BEM(Block Element Modifier) : id와 class가 아닌 모든 것을 class로 만들어서 한눈에 어떤 속성인지 
 알 수 있게 해줌.
 
-<second screen>
+<second screen(friend)>
 1. html
     !을 이용해 기본 form 불러올 수 있음
     l을 이용해 link form 불러올 수 있음
@@ -74,7 +74,7 @@ BEM(Block Element Modifier) : id와 class가 아닌 모든 것을 class로 만�
         #login-form input::placeholder{ }
         cursor : pointer;
 
-<third screen>
+<third screen(chat)>
 1. html
     vsc의 단축키로 nav>ul>li*4>a로 빠르게 nav form 만들 수 있음
 
@@ -91,6 +91,15 @@ BEM(Block Element Modifier) : id와 class가 아닌 모든 것을 class로 만�
             :root{
                 --something: repeated;
             }
+
+<find screen>
+1. html
+    vsc의 단축기로 .class-name*number 으로 빠르게 여러개의 div만들 수 있음
+    대문자는 디자인적인 부분, css에서 소문자를 대문자로 바꿔줄 수 있음
+
+2. css
+    text-transform : uppercase;
+    .something1 .something2{ }방법으로 something2의 다른곳에서의 바뀜을 방지
     
 
 
