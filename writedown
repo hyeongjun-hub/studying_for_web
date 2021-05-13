@@ -101,6 +101,13 @@ BEM(Block Element Modifier) : id와 class가 아닌 모든 것을 class로 만�
     text-transform : uppercase;
     .something1 .something2{ }방법으로 something2의 다른곳에서의 바뀜을 방지
     
+*vsc 단축키
+1. alt+shift+마우스
+    마우스가 어디로 가든지 커서가 생성됨
 
+2. drag -> alt+shift+i
+    드래그한곳에 전부 커서가 생김
+
+3. alt+b
 
     
