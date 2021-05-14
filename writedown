@@ -22,14 +22,24 @@ color: 1.#16진수 2.rgb(,,) 3.rgba(,,,투명도)
 <<advanced CSS>>
 
 <transition> : 어떤 상태에서 다른 상태로의 "변화"를 애니메이션으로 만드는 방법.
-state가 없는 요소에 붙어야함. transition: all 1s ease-in-out
-<transformation> : 모양변형, 여러개의 중복가능
-transform : rotateX(n);
-<animation> : 계속 재생
-@keyframes something{   from{}  to{}   }
+    state가 없는 쪽에 붙어야함. 
+    transition: (어떤것을 변화하게 할건지)
+        something{
+            transition: opacity 1s ease-in-out;
+            transition: transform 1s linear;
+        }         
+        something : hover {
+            opacity : 0.5;
+        }
+<transformation> : element 그 자체 모양변형, 여러개의 중복가능
+    transform: rotateXYZ(ndegree);
+    transform: translationXYZ(10px);
+<animation> 
+    @keyframes something{   from{}  to{}   }
+    animation: something 1s ease-in-out infinite;
 *border radius : 50%=원
 <media query> : 사용자의 screen의 사이즈를 알 수 있는 방법
-@media screen and (max-width:npx){ div{조건충족사항} }
+    @media screen and (max-width:npx){ div{조건충족사항} }
 
 <<git, github>>
 - repositoy는 자신의 코드가 살고 있는 곳.
@@ -108,6 +118,31 @@ BEM(Block Element Modifier) : id와 class가 아닌 모든 것을 class로 만�
 2. drag -> alt+shift+i
     드래그한곳에 전부 커서가 생김
 
-3. alt+b
+3. ctrl+b
+    hide sidebar
 
-    
+<z-index>
+z-index값이 클수록 화면의 앞으로 옴
+기본값: 0
+
+<chat screen>
+1. css
+    border-top-left-radius
+    flex child의 order
+        order을 바꿔줌으로써 보이는 순서를 바꿔줄 수 있다. 
+    class Modifier
+        classname-option으로 그 클래스option의 것만 더 바꿔줄 수 있다.
+        css:  .classname-option { css }
+              .classname-option .classname2 { css } (option하위의 classname2)
+        html: <span class="classname classname-option"></span>
+                <p class="classname2"></p>
+
+<animation>
+@keyframes something{   from{}  to{}   }
+    visibility : hidden; 
+        마우스가 걸리지 않게 빠져버림(html은 여전히 존재) -> JavaScript필요
+animation: something 1s ease-in-out forwards
+    forwards를 줌으로써 from으로 다시 돌아가지않고 to keyframe을 계속 유지
+
+    *display : none
+        하위element 모두 보이지않게
