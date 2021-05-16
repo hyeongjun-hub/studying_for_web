@@ -146,3 +146,17 @@ animation: something 1s ease-in-out forwards
 
     *display : none
         하위element 모두 보이지않게
+
+
+<<git>>
+<branch>
+    master
+    branch 평행세계 만들 수 있음
+    commit후 git에서 branch를 선택하는 것 만으로 vsc의 코드와 브라우저가 바뀜
+    마지막에 merge하는 것으로 하나로 통합가능
+
+<git>
+    static webpage를 무료 호스팅을 해줌(publishing)
+    *static webpage : only css html javascript (front-end만)
+        branch이름을 필수적으로 gh-pages로 만듦 
+        저장소는 public
