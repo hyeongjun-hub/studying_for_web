@@ -1,0 +1,44 @@
+<<1. Theory>>
+HTML에서의 삽입 위치 : body의 가장 마지막
+    <script src="script.js"></script>
+
+* allert(something)
+* console.log(something) : console에 print해줌
+* camel case 작성법 : 소문자로 시작후 space대신 대문자로 시작
+
+한 줄 : expression
+    끝 : ;
+변수의 사용방법
+    Create -> Initioalize -> Use
+    생성과 초기화를 동시에 할 수 있음
+변수 생성
+    let a; : 일반적인 변수 생성
+    const a = n; : 상수 선언, 바꿀 수 없음
+    var a;
+*주석처리
+    //do not read this
+    /*it's also work */
+변수의 종류
+    String
+        const what = "Something";
+    Boolean
+        const wat = true;
+    Float
+        const num = 55.1;
+data 정렬
+    Array
+        const daysOfWeek = ["Mon", "Tue", True, 40];
+    
+    Object
+        const Info = {Name:"name", 
+        age:32,
+        gender:"LALALAL",
+        favMovies: ["Allong the gods", "HarryPoter"]
+        favFood: [{name:"kimchi", fatty:false}]} //선언, 초기화
+
+        console.log(Info.gender); //실행
+        
+
+
+
+
