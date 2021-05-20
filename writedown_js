@@ -36,9 +36,81 @@ data 정렬
         favMovies: ["Allong the gods", "HarryPoter"]
         favFood: [{name:"kimchi", fatty:false}]} //선언, 초기화
 
-        console.log(Info.gender); //실행
+*console.log(Info.gender); //실행
+
+function
+    argument(인자)
+    function func_name(arg1, arg2){
+        console.log("Hello!", arg1, "world!", arg2, "\n")
+    }
+    func_name(1,'a');
+
+    ``:백틱 - ${인자}로 변수대입 가능
+    '':싱글 - string
+    "":더블 - string
+
+    function func_name(arg1, arg2){
+        return `Hello! ${arg1} world! ${arg2} \n`
+    }
+    console.log(func_name(1,'a'));
         
+    const calculator = {
+        plus: function(a,b){
+            return a+b
+        }
+    }
+    console.log(calculator.plus(5,5))
 
+    브라우저에서 제공하는 함수
+        javascript에서 id를 불러오려면
+            *DOM(Document Object Model)객체로 !
+                javascript는 html에 있는 모든 요소를 object로 바꿔준다
+            const title = document.getElementById("id");
+            title.innerHTML = "Hi! From JS";
+                원래 HTML의 요소를 바꿨음
+            console.dir(title); - title이 가진것들 콘솔에 나열(자바스크립트 객체 표기법)
+            title.style.color = "red"
+            const title1 = document.querySelector("#id"); - 노드의 첫 번째 자식반환
+event
+    function handleResize(event){
+        console.log(event);
+        console.log("I have been resized");
+    }
 
+    window.addEventListener("resize", handleResize)
+    *함수뒤에() : 함수를 지금 즉시 호출
+    **함수뒤에()없음 : 함수호출
 
+    const title = document.getElementById("id");
+    function mouseclick(){
+        title.style.color = "blue"
+    }
+    title.addEventListener("click", mouseclick);
 
+*prompt - 매우 오래된 자바스크립트 함수로 무언가 입력할 수 있도록 해줌
+
+if(condition){
+    block
+}
+else if{
+    block
+}
+else {
+    block
+}
+
+* === 는 조건을 확인하는 용도
+** && : and
+*** || : or
+**** !== : 같지않다
+
+    if else로 click과 default 나눠 색깔 정해주기
+        1. css를 바꿔주는 방법 js_try.js참고
+        2. 클래스를 추가해주는 방법
+            단점: 이전의 클래스가 사라져버림(replace)
+            =>클래스리스트 사용 
+                title.classname(CLICKED_CLASS)->
+                title.classList.add(CLICKED_CLASS)
+                title.classList.remove(CLICKED_CLASS)
+                title.classList.contains(CLICKED_CLASS)
+                    =>title.classList.toggle(CLICKED_CLASS)
