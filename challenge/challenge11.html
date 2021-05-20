@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>You Are Awesome!</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.14.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style11.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header__box">
+        <i class="fas fa-bars fa-lg"></i>
+        <span>library</span>
+        <i class="fas fa-shopping-bag fa-lg"></i>
+      </div>
+    </header>
+    <main class="Book">
+      <div class="Book__search">
+        <span>Search books...</span>
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="Book__info">
+        <div class="Book__info-title"><h1>Book of the day</h1></div>
+        <div class="Book__info-main">
+          <img src="https://avatars.githubusercontent.com/u/68727819?v=4" />
+          <div class="Book__info-p">
+            <div class="Book__info-span">
+              <h2>No Fixed Abode</h2>
+              <span> Journey Through </span>
+            </div>
+            <div class="Book__info-star">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star gray"></i>
+            </div>
+            <div class="Book__info-jb">
+              <div class="Book__info-Journey">Journey</div>
+              <div class="Book__info-Biography">Biography</div>
+            </div>
+            <div class="Book__info-button">
+              <div class="Book__info-button__circle">
+                <i class="fas fa-bookmark"></i>
+              </div>
+              <div class="Book__info-button__rect">Book Now</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Book__reco">
+        <div class="Book__reco-title">Top Adventures</div>
+        <div class="Book__reco-b">
+          <div class="Book__reco-book">
+            <img
+              src="https://media.istockphoto.com/vectors/woman-reading-book-with-pile-of-books-vector-id1244793141?b=1&k=6&m=1244793141&s=170667a&w=0&h=S1UqSB_h7x45Ty1pCVhef34ObrN4n8y2snAizlcJ9VI="
+            />
+            <div class="Book__info-star bookstar">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star gray"></i>
+            </div>
+          </div>
+          <div class="Book__reco-book">
+            <img
+              src="https://media.istockphoto.com/vectors/set-of-paper-books-with-colorful-hard-cover-isolated-on-white-vector-vector-id1256910594?b=1&k=6&m=1256910594&s=170667a&w=0&h=jfzlsfXlP-UMyYnYf_q-Wbm8oIr1Pt7hrS1FtkfWpoY="
+            />
+            <div class="Book__info-star bookstar">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star gray"></i>
+            </div>
+          </div>
+          <div class="Book__reco-book">
+            <img
+              src="https://media.istockphoto.com/vectors/school-poster-with-colorful-books-and-text-vector-id1246706597?b=1&k=6&m=1246706597&s=170667a&w=0&h=zB7K89Cn7SJWtZzuhAu244oaTyvuNpkux7572u_DfPk="
+            />
+            <div class="Book__info-star bookstar">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star gray"></i>
+            </div>
+          </div>
+          <div class="Book__reco-book">
+            <img
+              src="https://media.istockphoto.com/vectors/paper-books-collection-vector-illustration-learning-and-education-vector-id1208020963?b=1&k=6&m=1208020963&s=170667a&w=0&h=kHiHkcDP8PHjSz8rhT2_foSqog3dc4bSSy2DhnKMIgQ="
+            />
+            <div class="Book__info-star bookstar">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star gray"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Book__authors-title">Popular authors</div>
+      <div class="Book__authors">
+        <img
+          src="data:image/jpeg;base64,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"
+        />
+        <div class="Book__authors-info">
+          <span> George Raymond Richard Martin </span>
+          <h6>
+            Modern American science ficion writer, screen writer, porucer and
+            editor, winner of many literary awards.
+          </h6>
+        </div>
+      </div>
+    </main>
+
+    <div id="no-mobile">
+      <span>Your screen is too small!</span>
+    </div>
+  </body>
+</html>

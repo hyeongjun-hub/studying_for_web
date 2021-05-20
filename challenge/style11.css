@@ -1,0 +1,215 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  height: 120vh;
+}
+
+header {
+  background-color: #f3d13c;
+  width: 100%;
+  height: 12%;
+  padding: 30px 20px;
+}
+
+.header__box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__box span {
+  font-size: 25px;
+}
+
+.Book {
+  width: 90%;
+  position: absolute;
+  top: 12%;
+  left: 25px;
+  padding: 10px;
+}
+
+.Book__search {
+  padding: 15px 30px;
+  border-radius: 20px;
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  box-shadow: 0px 3px whitesmoke;
+}
+
+.Book__search span,
+.Book__search i {
+  opacity: 0.3;
+}
+
+.Book__info {
+  margin-bottom: 20px;
+}
+
+.Book__info-title {
+  margin: 20px 0;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.Book__info-main {
+  display: flex;
+}
+
+.Book__info img {
+  width: 130px;
+  height: 180px;
+  border-radius: 10px;
+  margin-right: 25px;
+}
+
+.Book__info-span {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.Book__info-span h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.Book__info-span span {
+  margin-top: 10px;
+  font-size: 15px;
+  opacity: 0.3;
+}
+
+.Book__info-star {
+  display: flex;
+  margin-bottom: 15px;
+  font-size: 10px;
+}
+
+.Book__info-star i {
+  color: #f3d13c;
+  margin-left: 5px;
+}
+
+.Book__info-star i:last-child {
+  color: gray;
+}
+
+.Book__info-jb {
+  display: flex;
+}
+
+.Book__info-Journey,
+.Book__info-Biography {
+  background-color: whitesmoke;
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  font-size: 15px;
+}
+
+.Book__info-button {
+  height: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Book__info-button__circle {
+  background-color: #f3d13c;
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.Book__info-button__rect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(27, 1, 1);
+  color: whitesmoke;
+  padding: 0 25px;
+  border-radius: 10px;
+}
+
+.Book__reco-title {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.Book__reco-b {
+  display: flex;
+}
+
+.Book__reco-b img {
+  border-radius: 10px;
+  width: 90px;
+  height: 120px;
+  margin-bottom: 20px;
+  margin-right: 25px;
+}
+
+.Book__info-star.bookstar i {
+  margin-left: 6px;
+}
+
+.Book__authors-title {
+  margin-top: 15px;
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.Book__authors {
+  display: flex;
+  width: 90%;
+}
+
+.Book__authors img {
+  width: 130px;
+  height: 150px;
+  border-radius: 10px;
+  margin-right: 25px;
+}
+
+.Book__authors-info {
+  padding: 5px;
+}
+
+.Book__authors-info span {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.Book__authors-info h6 {
+  margin-top: 15px;
+  opacity: 0.3;
+}
+
+#no-mobile {
+  position: absolute;
+  z-index: 99;
+  height: 100vh;
+  width: 100vw;
+  background-color: yellow;
+  display: flex;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+}
+
+@media screen and (min-width: 400px) {
+  #no-mobile {
+    display: none;
+  }
+}
