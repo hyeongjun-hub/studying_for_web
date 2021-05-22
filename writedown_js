@@ -114,3 +114,9 @@ else {
                 title.classList.remove(CLICKED_CLASS)
                 title.classList.contains(CLICKED_CLASS)
                     =>title.classList.toggle(CLICKED_CLASS)
+
+javascript function
+const date = new Date(); - 현재시각으로 변수 선언
+setInterval(function, time); - 함수를 실행 하고 싶은 시간간격동안 함수를 반복 실행
+
+local storage - 작은 자바스크립트 정보들을 브라우저에 저장
