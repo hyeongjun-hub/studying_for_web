@@ -1,0 +1,12 @@
+.color {
+  background-color: pink;
+}
+
+.white {
+  color: white;
+}
+
+.title-js {
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
