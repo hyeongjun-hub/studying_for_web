@@ -125,3 +125,29 @@ html에서 불러오는 것이 아닌 직접 변수를 만들 때
     const li = document.createElement("li");
 하위 자식으로 만들 때
     li.appendChild(span);
+id를 설정할 때
+    li.id = "~~";
+*local storage에는 자바스크립트의 data를 저장할 수 없다.
+    string만 저장 가능, 모든 데이터를 string으로 저장
+         => JSON.stringify() - (javascript object notation)
+
+*array.forEach(function(){}); - array에 있는 item 전부 function실행
+*array.filter(funtion(){}); - array에 있는 item 전부 function 실행 후 true인 것들만의 list 반환
+ex)
+function filterFn(toDo){
+    return toDo.id === 1 //id가 1인 것만 true로 반환
+}
+
+function deleteToDo(event){
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    const cleanToDos = toDos.filter(filterFn); //list에서 filterFn실행 후 true인 것들만 반환
+}
+exend)
+
+어떤 버튼이 선택되었는지 모를 때 (mouseEvent~~~로 표시될 때)event.target 사용
+    -><button>X</button>
+버튼의 father (어떤 li?)를 찾을 때 event.target.parentNode
+
+parseInt -> string을 int형으로 
