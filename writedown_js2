@@ -1,0 +1,66 @@
+<<nodeJS>>
+크롬 V8 자바스크립트 엔진으로 빌드 된 자바스크립트 런타임
+    브라우저 밖에서 돌아가는 자바스크립트 
+    Ryan은 자바스크립트를 브라우저에서 분리하여 nodeJS를 만듦
+
+<<npm>>
+자바스크립트 언어를 위한 패키지 매니저
+nodeJS와 상호작용을 할 수 있게 해줌 (yarn과 같은 기능)
+대부분 npm 명령어 사용 아주. 가끔 node 명령어
+유명한 사람들이 만든 패키지들을 다운받고 사용할 수 있음.
+ex) express 패키지 - 한달에 7000만명 다운로드
+    npm 덕분에 npm install express로 사용가능
+
+<<json>>
+프로그래머가 파일에 정보를 저장하기 위해 만든 방식 중 하나
+파일에 정보를 입력하는 방식, { key : value }
+nodeJS인 경우 파일이름 = package.json이어야만 함.
+
+<<start>>
+폴더생성 - git init - git repository - git remote add - npm init 
+
+<<package.json>>
+
+<scripts>
+"scripts": {
+    "start": "node index.js"
+}
+Tml > npm run start
+    -> node index.js가 실행됨
+나중에는 서버를 시작하는 script, CSS를 압축하는 script, 웹사이트를 빌드하고 서버에 배포하는 script등을 만듦
+*package.json이 있는 폴더 내에서 terminal명령어 실행시켜야 함.
+*babel - "dev": babel-node index.js -> babelnode로 index.js 실행
+    ex) const express = require("express"); -> import express from "express";
+        Tml > npm run dev
+        -> 뭔가 바뀌면 항상 저장하고 계속 실행시켜줘야함 -> nodemon사용
+*nodemon - 파일이 수정되는 걸 감시해주는 패키지, 수정되면 알아서 재시작
+            "nodemon --exec babel-node index.js"
+            index.js를 수정하고 저장하면 알아서 서버를 재시작
+
+<<npm>>
+
+<npm install> (npm 웹사이트에 있는 그대로 복사 붙여넣기!)
+Tml > npm i(nstall) express
+package-lock.json파일과 node_modules폴더 자동 생성됨
+package-lock.json - 패키지들을 안전하게 관리
+node_modules - npm으로 설치한 모든 패키지가 저장되어 있음
+    <express>
+    node_modules > express > lib > package.json 
+        "dependencies" : {}- express가 작동되려면 필요한 패키지들
+            npm install express시 같이 다운받아짐
+npm은 package.json의 dependencies를 보고 그 안에 있는 모듈들을 알아서 설치함
+-> package.json이 중요한 이유!
+<dependencies>
+    프로젝트를 실행하기 위해 필요(가솔린)
+<devDependencies>
+    개발자에게 필요한 dependencies(운전을 잘하기 위한 음악)
+
+<<babel>>
+babel - JavaScript compiler, 작성한 최신 자바스크립트를 컴파일
+nodeJS가 이해하지못하는 최신 JavaScript가 있음
+    선택지 1. nodeJS가 이해하는 자바스크립트만 사용
+    선택지 2. babel을 사용!
+babel이 알아서 babel.config.json이라는 파일의 내용을 들여다 봄
+
+<preset> - babel을 위한 거대한 플러그인
+    preset-env : smart preset, 최신 자바스크립트 구문 사용가능
