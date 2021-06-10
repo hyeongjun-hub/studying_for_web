@@ -107,4 +107,44 @@ handler = controller
 controller는 req, res말고 next라는 argument를 가지고 있다.
 middleware는 next();를 포함하는 controller
 
-<next> - 다음 함수를 호출
+<next();> - 다음 함수를 호출
+
+<app.use(globalMiddleware);> : global middleware를 생성
+모든 route에서 이 globalMiddleware를 가짐
+* express는 위에서 아래로 순서대로 실행하기 때문에 순서 중요 
+ex) privateMiddleware
+const privateMiddleware = (req, res, next) => {
+    const url = req.url;
+    if(url === "/protected"){
+        return res.send("<h1>Not Allowed</h1>");
+    }
+    console.log("Allowed, you may continue.");
+    next();
+};
+
+<Setup Recap>
+package.json = node.js  관련정보를 넣은 text
+    npm이 어떤 행동을 할 수 있게 해주는 것들이 있음
+        "scripts": { "something": "" } - Tml : npm run something(aliasing)
+    "dependecies": { "express": "^4.17.1"} - node_modules에 자동으로 추가
+    "devDependencies": { } - node_modules로 가는 것 동일, 차이점 : 개발자가 개발할 때 필요한 것들
+        ex) nodemon - 파일을 보고 있다가 변화가 생기면 commend를 재시작
+        ex) @babel - server.js를 node가 아닌 babel-node로 돌림 -> 최신 언어 사용가능
+                babel.config.json파일을 만들어 babel에 추가하고싶은 plugin(preset)을 추가
+
+<Server Recap>
+Server : 항상 켜져있고 인터넷에 연결 돼 있으면서 request를 listening하고 있는 컴퓨터
+request : 우리가 서버에 요청하는 것(브라우저를 통해 웹사이트와 상호작용하는 것)
+    import express from "node_modules/express";
+    const app = express(); express application을 사용할 수 있게 변수로 설정
+port : 서버의 창문, request를 보내는 곳
+    app.listen(4000, handleListening); : 창문(port)을 여는 곳
+4000 port : backend 관습 거의 비어있음
+cannot get / : server가 브라우저의 request를 listening하고 있는데 대답해 줄 사람이 없음
+http method : post, delete, get
+    ex) get : 사용자가 요청을 하면 서버가 보내줌 우리가 가는 것이 아님
+            express.js에서 하는 방법은 app.get을 사용
+            argument : req, res, handdler
+
+<Controller Recap>
+
