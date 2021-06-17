@@ -128,7 +128,7 @@ package.json = node.js  관련정보를 넣은 text
         "scripts": { "something": "" } - Tml : npm run something(aliasing)
     "dependecies": { "express": "^4.17.1"} - node_modules에 자동으로 추가
     "devDependencies": { } - node_modules로 가는 것 동일, 차이점 : 개발자가 개발할 때 필요한 것들
-        ex) nodemon - 파일을 보고 있다가 변화가 생기면 commend를 재시작
+        ex) nodemon - 파일을 보고 있다가 변화가 생기면 command를 재시작
         ex) @babel - server.js를 node가 아닌 babel-node로 돌림 -> 최신 언어 사용가능
                 babel.config.json파일을 만들어 babel에 추가하고싶은 plugin(preset)을 추가
 
@@ -139,7 +139,7 @@ request : 우리가 서버에 요청하는 것(브라우저를 통해 웹사이�
     const app = express(); express application을 사용할 수 있게 변수로 설정
 port : 서버의 창문, request를 보내는 곳
     app.listen(4000, handleListening); : 창문(port)을 여는 곳
-4000 port : backend 관습 거의 비어있음
+4000 port : backend 관습, 거의 비어있음
 cannot get / : server가 브라우저의 request를 listening하고 있는데 대답해 줄 사람이 없음
 http method : post, delete, get
     ex) get : 사용자가 요청을 하면 서버가 보내줌 우리가 가는 것이 아님
@@ -147,4 +147,21 @@ http method : post, delete, get
             argument : req, res, handdler
 
 <Controller Recap>
+모든 controller는 req와 res가 있다. (express로부터 주어짐, arg 순서 중요)
+respond는 여러 method가 있다. ex)res.send(), res.end(), res.cookies(), res.json()
+    res.end(); : finish connection
+    res.send(); : text,html,json을 보낼 수 있음(화면에 띄울 수 있음)
+request도 여러 method ex)req.ip(), req.cookies(), req.secure()
+    req.method(); : get, post, put등의 http method 정보를 줌
+    req.path(); : url
+
+<morgan> : middleware를 return함
+기존 middleware보다 정교함, next()를 포함함
+    "dev" : method, path, status code, respond time
+    "combined" : time, method, http version, status code, browser, os..
+    "tiny"
+사용 : import logger from "morgan";
+    app.use(logger("dev"));
+
+
 
