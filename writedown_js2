@@ -163,5 +163,31 @@ request도 여러 method ex)req.ip(), req.cookies(), req.secure()
 사용 : import logger from "morgan";
     app.use(logger("dev"));
 
+// const loggermid = (req, res, next) => {
+//     console.log(`METHOD ${req.method} ${req.path}`);
+//     next();
+// };
+// app.use(loggermid);
+// const home = (req, res) => {
+//     return res.send("hello");
+// };
+// app.get("/", home);
+
+
+<<router>> - 컨트롤러와 URL의 관리를 쉽게 해줌(mini-application)
+작업중인 주제를 기반으로 URL을 그룹화함
+    글로벌라우터, 유저라우터, 비디오라우터
+
+*import 하기전엔 export해야함
+    default export로 변수를 export
+    import한 변수는 export한 것을 불러왔기 때문에 똑같은 이름으로 안써도 무방
+
+*라우터와 컨트롤러를 섞어서 쓰는것은 좋지않음
+    컨트롤러는 함수, 라우터는 그것을 이용하는 입장이기 때문
+
+*default로 export하면 이름을 바꿀 수 있었지만
+ export const로 하면 실제 이름을 그대로 써야함 (오브젝트를 그대로 들고 옴)
+
+
 
 
