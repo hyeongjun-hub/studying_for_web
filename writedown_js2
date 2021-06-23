@@ -202,6 +202,32 @@ request도 여러 method ex)req.ip(), req.cookies(), req.secure()
 /(nico\w+)/g - nico로 시작하는 단어들
 /(\d+)/g - 숫자만
     *JavaScript는 \ 두번
-    
 
+<<pug>> - 템플릿 엔진
+굉장히 편리함, html에서 <>을 생략가능(깔끔한 html), html에 자바스크립트를 포함가능
+<최대장점> : partials를 이용하여 반복할 필요가 없음
+<설정방법> : npm install pug -> app.set("view engine", "pug")
+    :(Express에게 html helper(view engine)로 pug를 쓰겠다고 말함)
+    views폴더안에 something.pug로 파일생성(express는 views폴더 안의 view폴더를 봄)
+<작성방법>
+    모든 건 소문자로 작성, 속성이 있으면 괄호안에 작성
+    모든 건 부모속성보다 안쪽에 있어야 함(tap)
+        #{Javascript code}으로 변수를 사용하거나 pug에서 자바스크립트를 사용 가능
+<적용방법> : (pug에게 파일을 보내면 pug가 렌더링해서 normal html로 변환함)
+    : res.render("something") #something은 view파일
+<partials>
+    footer example) view/partials/footer.pug 생성 -> footer내용 작성 
+    -> include partials/footer.pug
+<상속>
+    html의 base를 만들 수 있음
+    base.pug에 반복되는 html을 넣고 반복할 pug에 extends base.pug
+    override하려면 block을 사용
+    block : 내용을 넣을 수 있는 템플릿의 창, 부모 pug에 block st로 작성
+        content block에 무언가 넣으려면 자식 pug에 block st \n html(st는 서로 이름 같아야 함)
+<변수>
+    #{variable}로 변수 줄 수 있음
+    변수 선언은 rendering 하는 곳에서 res.render("pugfile", {변수})
 
+*cwd = current working directory, process.cwd() = return 프로세스 현재 작업 dir
+*현재 server를 process하는 것은 package.json(node.js를 시동), 그렇기때문에 process.cwd는 package.json이 있는 dir
+*app.set("views", process.cwd() + "/directory/views") 로 임의로 views폴더 경로 설정 가능
