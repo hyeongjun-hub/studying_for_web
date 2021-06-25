@@ -227,7 +227,26 @@ request도 여러 method ex)req.ip(), req.cookies(), req.secure()
 <변수>
     #{variable}로 변수 줄 수 있음
     변수 선언은 rendering 하는 곳에서 res.render("pugfile", {변수})
+    =variable으로도 변수를 줄 수 있음
+<conditional>
+    만약 fakeUser가 들어왔을 때 logout link만 보이도록 하려면?
+    if fakeUser.loggedIn, else if fakeUser.loggedIn, else
+<iteration>
+    만약 array를 가져온다면 변수로 each variable in variables로 쓸 수 있음
+        else도 쓸 수 있음
+    *mixin : data를 받을 수 있는 partial
+        작성: mixin video(mixin가 받을 data)
+                반복될 문장들
+        적용: include pugfile 
+            +video(each문의 element)
+        어떤 페이지에서도 reuse가능
+*{ ,array: array = ,array와 같다}
 
 *cwd = current working directory, process.cwd() = return 프로세스 현재 작업 dir
 *현재 server를 process하는 것은 package.json(node.js를 시동), 그렇기때문에 process.cwd는 package.json이 있는 dir
 *app.set("views", process.cwd() + "/directory/views") 로 임의로 views폴더 경로 설정 가능
+
+<<MVP style>>
+html을 예쁘게 만들어 줌
+사용 : (in head)link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+
