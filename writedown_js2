@@ -2,11 +2,14 @@
 크롬 V8 자바스크립트 엔진으로 빌드 된 자바스크립트 런타임
     브라우저 밖에서 돌아가는 자바스크립트 
     Ryan은 자바스크립트를 브라우저에서 분리하여 nodeJS를 만듦
+    *런타임(runtime) : 프로그램이 실행되고 있을 때 존재하는 곳, 프로그래밍 언어가 구동되는 환경
+    (Javascipt는 web browser에서 작동하는 JavaScript가 있고 Node.js에서 구동되는 JavaScript가 있다)
+
 
 <<npm>>
 자바스크립트 언어를 위한 패키지 매니저
 nodeJS와 상호작용을 할 수 있게 해줌 (yarn과 같은 기능)
-대부분 npm 명령어 사용 아주. 가끔 node 명령어
+대부분 npm 명령어 사용 아주 가끔 node 명령어
 유명한 사람들이 만든 패키지들을 다운받고 사용할 수 있음.
 ex) express 패키지 - 한달에 7000만명 다운로드
     npm 덕분에 npm install express로 사용가능
@@ -85,12 +88,12 @@ babel이 알아서 babel.config.json이라는 파일의 내용을 들여다 봄
 
 app.get("/", callback) : 누군가 root page(/)로 get request를 보낸다면 서버는 callback함수를 작동
                         'cannot GET /' error 해결
-*사용자가 /rogin page같은 page를 원할 때 브라우저가 get request를 보냄
+*사용자가 /login page같은 page를 원할 때 브라우저가 get request를 보냄
 
 <handleHome>
 const handleHome = (req, res) => console.log("asdf");
 이 req와 res는 express로 부터 받은 것 따라서 get request를 받으면 express는 
-handleHome( {request받은 것}, {respond할 것})을 넣어줌 (express 역할)
+handleHome({request받은 것}, {respond할 것})을 넣어줌 
 
 <request>
 브라우저가 보내는 요청
@@ -181,6 +184,7 @@ request도 여러 method ex)req.ip(), req.cookies(), req.secure()
 *import 하기전엔 export해야함
     default export로 변수를 export
     import한 변수는 export한 것을 불러왔기 때문에 똑같은 이름으로 안써도 무방
+    반드시 하나만 default export할 수 있음
 
 *라우터와 컨트롤러를 섞어서 쓰는것은 좋지않음
     컨트롤러는 함수, 라우터는 그것을 이용하는 입장이기 때문
@@ -211,7 +215,7 @@ request도 여러 method ex)req.ip(), req.cookies(), req.secure()
     views폴더안에 something.pug로 파일생성(express는 views폴더 안의 view폴더를 봄)
 <작성방법>
     모든 건 소문자로 작성, 속성이 있으면 괄호안에 작성
-    모든 건 부모속성보다 안쪽에 있어야 함(tap)
+    모든 건 부모속성보다 안쪽에 있어야 함(tab)
         #{Javascript code}으로 변수를 사용하거나 pug에서 자바스크립트를 사용 가능
 <적용방법> : (pug에게 파일을 보내면 pug가 렌더링해서 normal html로 변환함)
     : res.render("something") #something은 view파일
