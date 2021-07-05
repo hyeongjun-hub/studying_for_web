@@ -105,7 +105,7 @@ res.end();로 response 종료
 res.send("");로 페이지에 "" print ""안에는 html,json도 포함가능
 
 <middleware>
-requenst와 response사이에 존재, 모든  middleware는 handler
+request와 response사이에 존재, 모든  middleware는 handler
 handler = controller
 controller는 req, res말고 next라는 argument를 가지고 있다.
 middleware는 next();를 포함하는 controller
@@ -232,6 +232,7 @@ request도 여러 method ex)req.ip(), req.cookies(), req.secure()
     #{variable}로 변수 줄 수 있음
     변수 선언은 rendering 하는 곳에서 res.render("pugfile", {변수})
     =variable으로도 변수를 줄 수 있음
+    class, href, id..등은 `${}`을 사용하여야 함
 <conditional>
     만약 fakeUser가 들어왔을 때 logout link만 보이도록 하려면?
     if fakeUser.loggedIn, else if fakeUser.loggedIn, else
@@ -254,3 +255,7 @@ request도 여러 method ex)req.ip(), req.cookies(), req.secure()
 html을 예쁘게 만들어 줌
 사용 : (in head)link(rel="stylesheet" href="https://unpkg.com/mvp.css")
 
+
+* ES6 문법
+const id = req.params.id;
+=> const { id } = req.params;
