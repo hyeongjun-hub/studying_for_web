@@ -284,32 +284,41 @@ document를 검색할 수 있고, 만들 수 있고, 삭제할 수도 있고, �
 데이터베이스를 클라우드에 배치하고, 모니터링가능
 
 
-<mongoose> 자바스크립트에서 mongodb상호작용, nodeJS와 mongoDB를 이어주는 다리역할
+<<mongoose>> 자바스크립트에서 mongodb상호작용, nodeJS와 mongoDB를 이어주는 다리역할
+<install>
 >>npm i mongoose
 db.js에 import mongoose from "mongoose";
 mongoose.connect("url/your database name");
 Event)  *mongoose.connection.on("error", function) : 여러번 발생 가능
         *mongoose.connection.once("open", function2) : 단 한번만 실행
+<schema>
 mongoose에게 데이터가 어떻게 생겼는지 알려줘야 함(model을 만드는 이유)
     shape = schema
     const videoSchema = new mongoose.Schema({
-        title: String,
+        title: {type: String, required: true},
         createdAt: Date,
     })
     const Video = mongoose.model("Video", videoSchema);
     export default Video; 그리고 server.js에서 import
-Video.find({search terms},)
+<database loading>
+Video.find({search terms},callback)
     search terms가 비어있으면 모든 형식을 찾는다는 것을 뜻함
-
 data가 loading된 후에 진행하여야 하므로 기다려야 함.
 그 방법에는 callback과 promise가 있다.
-*callback : 무언가 발생하고 난 다음 호출되는 function, err와 docs라는 signature를 가짐
-*promise : const home = async(req,res){
-    const videos = await Video.find({});
-}
+    callback : 무언가 발생하고 난 다음 호출되는 function, err와 docs라는 signature를 가짐
+    promise : const home = async(req,res){ const videos = await Video.find({});}
+        error-> try{}catch{}, 장점 : 보다 직관적임
+        *await : database를 기다림
+<post>
+const video = new Video({}) //models에서 Video schema를 import
+or await Video.create({}) - save()안해도 됨
+만약 schema에 반하는 형식으로 post된다면 mongoose가 형변환 시키거나 제외시켜버림
+video.save()로 database에 저장, promise가 내장돼있기 때문에 async와 await로 기다려야함
+try{}catch{}문으로 에러검출
 
 <CRUD>
-Create
-Read
-Update
-Delete
+Create, Read, Update, Delete
+
+<return & render>
+함수에서 render가 여러번 있으면 안됨
+return : 함수를 종료시켜주는 기능, 실수 방지 가능
