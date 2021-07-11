@@ -321,4 +321,23 @@ Create, Read, Update, Delete
 
 <return & render>
 함수에서 render가 여러번 있으면 안됨
-return : 함수를 종료시켜주는 기능, 실수 방지 가능
+return : 함수를 종료시켜주는 기능, return + render로 실수 방지 가능
+
+<schema>
+기능 : uppercase, lowercase, trim(whitespace제거), default, required, minLength
+, maxLength(보안차원에서 form에도 설정해야 함)
+
+*db에 저장된 데이터를 업데이트 하는 방법
+1. 각 데이터의 내용들을 하나하나 바꾸고 save()하는 방법
+2. mongoose의 함수를 쓰는 방법(await Video.findByIdAndUpdate(id,{}))
+
+*update 이전에 확인 할 것들 - middleware(hooks)
+model이 생성되기 전에 만들어야 함
+form : videoSchema.pre("save", sync function (){})
+
+<static>
+schema에 대한 함수를 임의로 만들 수 있음
+Video만 import하면 static함수는 import 없이 사용 가능
+form : videoSchema.static("formatHashtags", function(){})
+
+
