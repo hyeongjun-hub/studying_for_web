@@ -353,3 +353,14 @@ videos = await Video.find({
 * `^${keyword}` - keyword로 시작하는 단어 
 * `${keyword}$` - keyword로 끝나는 단어
 
+<<User>>
+*console창에 DeprecationWarning : 만든지 오래된 기능을 쓰고 있으니 업데이트 요망
+
+<hash>
+database에 password가 노출되면 안되기 때문에 hash기능을 사용함
+*deterministic function(결정적 함수) : 입력이 같으면 같은 내용을 출력함
+*bcrypt : rainbow table공격을 막아줌 
+    설치 : npm i bcrypt 
+    사용 : bcrypt.hash(password, saltRounds, callback)
+    *saltRounds : hash를 반복하는 횟수
+    
