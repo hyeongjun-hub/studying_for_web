@@ -326,6 +326,7 @@ return : 함수를 종료시켜주는 기능, return + render로 실수 방지 �
 <schema>
 기능 : uppercase, lowercase, trim(whitespace제거), default, required, minLength
 , maxLength(보안차원에서 form에도 설정해야 함)
+unique: 중복 x
 
 *db에 저장된 데이터를 업데이트 하는 방법
 1. 각 데이터의 내용들을 하나하나 바꾸고 save()하는 방법
@@ -358,9 +359,33 @@ videos = await Video.find({
 
 <hash>
 database에 password가 노출되면 안되기 때문에 hash기능을 사용함
-*deterministic function(결정적 함수) : 입력이 같으면 같은 내용을 출력함
+*deterministic function(결정적 함수) : 입력이 같으면 같은 내용을 출력함(hashing)
 *bcrypt : rainbow table공격을 막아줌 
     설치 : npm i bcrypt 
     사용 : bcrypt.hash(password, saltRounds, callback)
     *saltRounds : hash를 반복하는 횟수
     
+<$or operator>
+{ $or: [ {조건1}, {조건2}, ... {조건n} ] }
+    각 조건이 true일 때 실행할 수 있도록 할 수 있음
+    ex)
+    const usernameExists = await User.exists({
+    $or: [{ username: username }, { email }],
+    }); - username 또는 email이 존재하면 usernameExists = true 
+
+*res.status(400).render("",) 으로 브라우저에 상태 코드를 보낼 수 있음
+
+<login>
+입력한 password를 해쉬한 값으로 비교 해야함(입력값이 같으면 결과가 같으므로)
+*compare함수 
+    bcrypt.compare(password, hash).then(function(result){
+    }) 혹은 
+    async function checkUser(username, password){
+        const match = await bcrypt.compare(password, user.passwordHash);
+        if(match){ //login }
+    }
+
+<유저를 기억하는 방법>
+1. 유저에게 쿠키를 보냄 
+    *세션 : 백엔드와 브라우저 간에 어떤 활동을 했는지 기억하는 것
+2. 
