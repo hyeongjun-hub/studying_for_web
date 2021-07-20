@@ -419,7 +419,7 @@ express에서도 그 세션을 세션 DB에 저장함
 
 <login>
 user controller의 req.session object에 정보 추가
-이 정보를 template과 공유하려면 
+이 정보를 template과 공유하려면 res.locals
     res의 locals은 template가 접근할 수 있음 #{}
     전역변수이기 때문에 모든 template가 사용 가능
 localMiddleware를 session middleware보다 나중에 작성해야 작동
@@ -431,3 +431,77 @@ express-session : middleware, 브라우저와 backend가 상호작용할 때 마
     쿠키에는 많은 정보를 넣을 수 있는데 session ID를 넣을 수 있음
 session store : 우리가 session을 저장하는 곳, 서버를 재시작할 때마다 초기화
 
+<connect-mongo>
+session을 MongoDB에 저장
+사용 : import MongoStore from "connect-mongo"
+      session({ stroe: MongoStore.create({mongoUrl: "mongodb://127.0.0.1:27017/wetube",}),})
+메모리가 아닌 db에 저장되어있으므로 서버가 재시작 되어도 로그인 되어있음
+mongoUrl은 배포시 공개하면 안됨
+
+<Uninitialized Session>
+*모든 사용자에 대해 세션을 만들고 쿠키를 저장하는 것은 좋은 생각이 아님
+로그인한 사용자의 세션만 저장하는 게 좋음
+saveUninitialized: false : 세션이 새로 만들어지고 수정된 적이 없을 때 
+    Uninitialized
+    세션이 수정되는 곳 : userController의 req.session.~~
+
+<cookie property>
+secret : 쿠키에 sign할 때 사용하는 string 
+    우리 backend가 쿠키를 줬다는 걸 보여주기 위해 sign
+Domain : 이 쿠키를 만든 backend가 누구인지 알려줌, 브라우저는 Domain에 따라서
+    쿠키를 저장하도록 되어있음
+Expires : session cookie 만료 날짜, 적지않으면 session cookie는 사용자가 닫으면 끝남
+Max-Age : 언제 쿠키가 만료되는지 알려줌
+
+<.env>
+환경변수, env 파일에 추가하는 모든 건 대문자로
+사용 : process.env.~~
+
+<dotenv>
+require("dotenv").config();
+최대한 먼저 선언(가능한 빨리 env를 load해야하기 때문)
+하지만 require하면 번거롭게 사용하는 모든 파일에 require 해야 함
+import "dotenv/config"; 로 바꿔사용
+
+<깃허브의 login flow>
+1. 사용자를 깃허브로 보냄, 정보를 공유하는 것을 승인
+2. 깃허브는 사용자를 token과 함께 우리의 웹페이지로 돌려보냄
+3. 그러면 우리가 그 token으로 사용자의 정보를 받아옴, token은 빠르게 만료
+
+<1. OAuth>
+github.com/settings/applications 앱 만들기
+href="https://github.com/login/oauth/authorize?client_id=앱의 client_id&scope=user:email"
+parameter를 보내줘야 함 
+github의 public data보다 많은 정보를 얻으려면
+scope에 전송, 사용자에 대해 어디까지 알 수 있는지 적으면 됨
+*scope : docs/github.com/en/developers/apps/scopes-for-auth-apps
+    우리가 필요한 것 : user와 user email
+        &scope=read:user user:email
+allow_signup : github 계정이 있는 사람만 혹은 x 
+url을 각각 써주게 되면 번거로우므로 Controller에 url생성
+*URLSearchParams : utility,
+    URLSearchParams(config).toString으로 모두 이은 url 생성가능
+
+<2. >
+authorized 누르면 app의 authorized url으로 code와 함께 이동
+    code는 10분 뒤 만료
+Github 에서 받은 토큰을 Access 토큰으로 바꿔야 함
+    POST https://github.com/login/oauth/access_token
+*backend에서 fetch를 쓰는 법 : node-fetch를 설치 후 import
+
+<3. >
+access_token을 가지고 Github API를 사용해 user의 정보를 알 수 있음
+access_token은 
+fetch(https://github.com/login/oauth/access_token?id+secret+code,
+ {method:"POST", headers: {Accept:"application/json"}, },}).json으로
+구할 수 있음 
+access_token의 형태 
+{
+    access_token: 'asd_fsafdffdfsfdsfs',
+    token_type: 'bearer',
+    scope: 'read:user'
+}
+구한 access_token을 깃헙에 GET으로 보내야 함
+깃헙의 user public정보는 await fetch("https://api.github.com/user", 
+ {headers: {Authorization: `token ${access_token}`,},})).json();으로 
+ 구할 수 있음
