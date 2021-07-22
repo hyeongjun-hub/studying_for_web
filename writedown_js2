@@ -505,3 +505,13 @@ access_token의 형태
 깃헙의 user public정보는 await fetch("https://api.github.com/user", 
  {headers: {Authorization: `token ${access_token}`,},})).json();으로 
  구할 수 있음
+
+<로그인규칙>
+ *소셜로그인 시 데이터베이스상에 똑같은 email이 있을 때 그것으로 로그인 시켜 줌
+ const existingUser = await User.findOne({ email: emailObj.email });
+    req.session.loggedIn = true;
+    req.session.user = existingUser;
+
+<logout>
+req.session.destroy();
+return res.redirect("/");
