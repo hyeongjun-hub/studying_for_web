@@ -515,3 +515,28 @@ access_token의 형태
 <logout>
 req.session.destroy();
 return res.redirect("/");
+
+<github login recap>
+startGithubLogin - baseUrl과 config를 이어 finalUrl을 만든 후 User를 그곳으로 보냄
+깃헙 사이트에서 동의하면 우리 웹사이트로 돌아옴(/github/finish라는 Url으로) 그것의 controller
+finishGithubLogin - url에 ?code=xxx가 붙어서 들어옴, baseUrl+config = finalUrl
+    모든것이 올바르다면 github는 우리에게 access_token을 줌
+    apiUrl/user로 access_token을 보내면 user데이터를 받을 수 있음
+    apiUrl/user/emails로 access_token을 보내면 useremail데이터를 받을 수 있음
+        그 email들에서 primary이고 verified인 이메일을 찾은 후 로그인
+
+<middleware +>
+로그인하지 않은 사용자가 edit페이지로 들어왔을 때 protect
+로그인한 사용자가 다시 login페이지로 들어왔을 때 protect 
+로그인한 사용자만 video upload하게 protect 
+적용 : controller에서 controller부르기 전에 middleware를 삽입
+       .route로 만든 controller는 all(middleware).get().post()
+
+<edit profile>
+db의 user의 정보를 업데이트하고 session에서도 업데이트 해야 함
+1. 직접 작성
+    ...req.session.user : 기존에 req.session.user에 있는 내용을 전달
+2. updatedUser를 새로 만들고 new: true를 줌
+    const updatedUser = await User.findByIdAndUpdate(_id, {update contents},
+     {new: true})
+이미 있는 내용으로 바꿀 때 할 수 없다고 말해줘야 함
