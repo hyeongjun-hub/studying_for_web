@@ -553,3 +553,56 @@ github로 로그인했을 때 비밀번호가 없음
 pre save middleware가 password를 hash해 줌- create나 save시 hash됨
 session의 password또한 update 해야 함
 또는 DB에서 가장 최근의 password를 가져오면 session을 건들필요 없음
+
+<<upload file>>
+<multer> : file을 업로드할 수 있도록 도와줌
+설치 : $npm i multer 
+사용조건 : form을 multipart form으로 만듬
+        form(enctype="multipart/form-data")
+        파일을 백엔드로 보내기 위한 encoding type
+사용 : 1. middleware 설정 
+        uploadFiles = multer({ dest: "uploads/"})
+        upload한 파일들의 경로를 설정 
+       2. 경로의 폴더 생성 
+       3. middleware router에 추가
+        .post(uploadFiles.single("avatar"), postEdit);
+        *single : file을 하나만 받아옴, avatar = input name
+        *multer가 input으로 avatar 파일을 받아 uploads폴더에 저장한 후 그 파일 정보를 postEdit에 전달
+        req.file에 파일이 있음
+    
+*db에는 절대 file을 저장하면 안됨, 폴더에 파일을 저장후 그 위치만 db에 저장
+*static files serving 활성화 : 폴더 전체를 브라우저에게 노출시킴
+    app.use("/uploads", express.static("uploads"))
+
+<video upload>
+multer에 file 크기 제한 
+multer({limits: { fileSize: 10000000,},});
+
+*ES6 문법
+    const fileUrl = req.file.path;
+    => const { path: fileUrl } = req.file;
+    === const {path} = req.file;
+        const fileUrl = path;
+
+<User profile>
+1. video에 owner(id)를 추가,
+ owner는 objectId, video Schema에서 owner를 설정할 때
+    type:mongoose.Schema.Types.ObjectId
+    ref:"model name" - mongoose에게 owner에 어떤 model의 objectId를 저장하겠다고 알림
+upload video부분에서 owner: req.session.user._id 추가
+*populate: 
+    const owner = await User.findById(video.owner)를 추가로 쓸 필요없이 
+    const video = await Video.findById(id).populate("owner");로 
+    schema에서 ref="model"한 부분의 내용을 실제값으로 채워줌
+    model의 모든 값들을 owner에 추가
+
+2. user에는 소유한 video(id) list 추가 
+한 user가 여러 video를 소유할 수 있으므로 user schema의 videos는 array 
+    videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
+upload video부분에서 const user = await User.findById(_id);
+                     user.videos.push(newVideo._id);
+                     user.save();
+user controller에서 .populate("videos");추가 => user에 videos : {,,,}가 추가됨 
+*video가 push되고 save될 때마다 password가 hash되는 bug발생 
+    if(this.isModified("password")){}
+
