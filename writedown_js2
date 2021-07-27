@@ -606,3 +606,52 @@ user controller에서 .populate("videos");추가 => user에 videos : {,,,}가 �
 *video가 push되고 save될 때마다 password가 hash되는 bug발생 
     if(this.isModified("password")){}
 
+<<frontend>>
+<Webpack> : backend의 babel처럼 브라우저가 이해할 수 있도록 css로 바꿔주는 역할
+.scss -> css
+cf) Gulp - Webpack의 대체제 중 하나, Webpack만큼 유용친 않음 
+Webpack을 직접 사용할 일은 거의 없음, react나 react native등 대부분의 프레임 워크에 내장
+<webpack.config.js>
+module.exports = {
+    entry: "",// src code, 처리하고 싶은 코드
+    output: {
+        filename: "",
+        path: "절대경로", //저장될 경로
+    }
+}
+<rules>
+각각의 파일 종류에 따라 어떤 전환을 할 건지 결정
+1. js를 bable로 
+* mode : 개발중에는 코드를 압축하면 안되므로 코드가 완성본인지 아닌지 알려줘야함 
+    production - 완성본
+    development - 진행중
+client폴더(webpack 처리 전)를 작업하면 browser가 assets폴더(webpack 처리 후) 내용을 읽음
+하지만 브라우저가 assets폴더의 존재를 모르기 때문에 알려줘야함
+
+*app.use("/assets", express.static("assets")) // 전자 : url경로설정, 후자 : 폴더경로
+: express한테 사람들이 이 폴더 안에 있는 파일들을 볼 수 있게 하라고 요청하는 것
+
+*pug와 assets폴더 연결
+script(src="/asset/js/main.js") 
+
+2. scss(sassy css)를 css로
+세가지의 loader 
+    1) scss를 일반 css로 변형하는 loader(sass-loader)
+    2) 폰트같은걸 불러올 때 css에 굉장히 유용하게 쓰이는 loader(css-loader)
+    3) 변환한 css를 웹사이트에 적용할 loader(style-loader)
+역순으로 합침
+    use:["style-loader", "css-loader", "sass-loader"]
+style-loader대신 webpack plugin을 사용  <- js파일에서 css를 넣고 싶지 않기 때문
+분리된css파일을 사용하기 위해 MiniCssExtractPlugin!
+
+<정리>
+client파일이 webpack에 의해 로딩되고 assets폴더에 변환된 js, css파일이
+저장되고 base.pug가 그 파일을 읽으면서 브라우저가 이해할 수 있게 됨
+*watch: true - run dev assets 매번 할 필요 x 
+    back-end까지 재시작 됨
+        nodemon.json에서 ignore해줌
+
+*clean : output folder를 build(재시작)전 지워 줌 
+
+**중요! 두가지 콘솔을 이용해야함
+    1. backend 2. watch client파일
