@@ -655,3 +655,7 @@ client파일이 webpack에 의해 로딩되고 assets폴더에 변환된 js, css
 
 **중요! 두가지 콘솔을 이용해야함
     1. backend 2. watch client파일
+
+<css작업> 
+client > scss > components - header, footers..
+client > scss > screens - home, search...
