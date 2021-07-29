@@ -659,3 +659,28 @@ client파일이 webpack에 의해 로딩되고 assets폴더에 변환된 js, css
 <css작업> 
 client > scss > components - header, footers..
 client > scss > screens - home, search...
+
+<<player>>
+사전 작업 : webpack 의 entry를 object로 만들어 video player만의 js를
+    만들고 둘을 변환하도록 만듬
+    output의 filename이 중복되므로 "[name].js"로 webpack의 기능을 활용해
+    entry의 이름으로 두개의 파일을 만들도록 만듬
+    *주석처리 
+        // : frontend에서도 보임
+        //- : 보이지 않음
+*input(type="range")의 eventlistener "input"은 실시간변화, "change"는 마지막변화
+
+<loadedmetadeta> (event)
+    metadate : video의 움직이는 이미지를 제외한 모든 엑스트라들
+
+<timeupdate> : video의 시간이 변화될 때마다 발생
+* Math.ceil() : 올림, Math.floor() : 버림
+
+<format time>
+new Date(0) - zerotime
+    zerotime : 1970년 1월 1일 00시 00분(영국)
+new Date(29*1000).toISOString().substr(from, length)
+    우리가 원하는 부분만 추출
+
+<fullscreen>
+document.fullscreenElement : 풀스크린인 element추출
