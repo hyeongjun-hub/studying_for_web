@@ -684,3 +684,19 @@ new Date(29*1000).toISOString().substr(from, length)
 
 <fullscreen>
 document.fullscreenElement : 풀스크린인 element추출
+
+<cursor를 넣으면 contoller>
+event - mousemove, mouseleave
+*id = setTimeout(function, time) : time밀리초 후 function이 불려짐\
+    id는 setTimeout의 하나뿐인 id
+    *clearTimeout(id)로 초기화 가능
+
+<cursor멈추면 controller x>
+움직일 때 마다 timeout을 설정하고 움직임이 있으면 timeout을 clear함 
+
+<<API view>>
+interactivity: url이 바뀌지 않아도 페이지가 변화하는 것
+*url을 바꾸는 것이 백엔드에게 강제로 무언가를 하게 하는 유일한 방법
+event로 backend에 요청 - fetch
+<data attribute> : HTML element에 데이터를 저장할 수 있음
+    (data-videoId=video._id)
