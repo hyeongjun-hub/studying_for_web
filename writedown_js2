@@ -675,6 +675,8 @@ client > scss > screens - home, search...
 
 <timeupdate> : video의 시간이 변화될 때마다 발생
 * Math.ceil() : 올림, Math.floor() : 버림
+video에서만 timeupdate라는 event사용 가능
+
 
 <format time>
 new Date(0) - zerotime
@@ -694,9 +696,39 @@ event - mousemove, mouseleave
 <cursor멈추면 controller x>
 움직일 때 마다 timeout을 설정하고 움직임이 있으면 timeout을 clear함 
 
-<<API view>>
+<<API view>> : rendering 하지 않는 view
+*요즘 시대에는 백엔드에서 템플릿을 렌더링하지 않음
+API : frontend와 backend가 서버를 통해 통신하는 방법
 interactivity: url이 바뀌지 않아도 페이지가 변화하는 것
 *url을 바꾸는 것이 백엔드에게 강제로 무언가를 하게 하는 유일한 방법
-event로 backend에 요청 - fetch
+event로 backend에 요청 : fetch("id") - id를 얻을 수 없음 
 <data attribute> : HTML element에 데이터를 저장할 수 있음
-    (data-videoId=video._id)
+    controller1({}) -> pug(dataset) -> controller2(fetch)
+        (data-videoId=video._id)
+fetch("url", {method:"POST"})
+    상태코드를 보내야 함 : res.sendStatus(400)
+    
+<<Recorder>>
+MediaDevices.getUserMedia(constraints) : navigator에서 카메라와 오디오를 가져다 줌
+    실행 시 시간이 걸리므로 promise나 await를 사용해야 함
+        *await를 사용하려면 regeneratorRuntime을 설치
+    constraint : { audio: true, video: true}
+    preview.srcObject = stream;
+    *srcObject : video가 가질 수 있는 무언가 
+<MediaRecorder>
+const recorder = new MediaRecorder(stream);
+recorder.start();
+recorder.stop()을 호출하면 dataavailable event가 발생됨, 
+    e는 data property를 받은 BlobEvent
+    handler : ondataavailable
+<URL.creatObjectURL(event.data)> : 브라우저 메모리에서만 가능한 URL을 만들어 줌
+이 URL은 파일을 가리키고 있음
+이 URL을 video.src에 저장하고 video.play를 하면 녹화되어 재생됨
+*video.loop = true - 반복재생
+
+<download>
+a.href = videoFile;
+a.download - a.href로 가는 것이 아니라 download를 시켜줌
+a.click();
+
+<<webassembly>>
