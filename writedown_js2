@@ -731,4 +731,26 @@ a.href = videoFile;
 a.download - a.href로 가는 것이 아니라 download를 시켜줌
 a.click();
 
-<<webassembly>>
+<<WebAssembly>>
+<FFmpeg> : video를 압축하거나 video format을 변환하거나 video에서 audiou를 추출하거나
+    video의 스크린샷을 찍는 등 많은 것들을 할 수 있음
+    ex) video를 네가지 화질의 버전으로 나누는 것
+    백엔드에서 실행해야만 함 - 비쌈 => webassembly를 사용
+<webassembly> : 우리가 프론트엔드에서 매우 빠른 코드를 실행할 수 있게 해줌
+    - 실행 비용이 큰 프로그램들을 브라우저에서 실행할 수 있음
+<ffmpeg.wasm> : 비디오를 변환하기 위해 사용자의 컴퓨터를 사용함(사용자의 브라우저)
+    import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+    const ffmpeg = createFFmpeg({});
+    await ffmpeg.load();
+        사용자가 다른 소프트웨어를 사용할 것이기 때문에 await 
+    ffmpeg.FS("writeFile", "filename.webm", binary data) - ffmpeg의 가상의 세계에 파일을 생성
+    await ffmpeg.run("-i", "filename.webm", "-r", "60", "ouput.mp4")
+        -초당 60프레임 mp4 인코딩 
+    const mp4File = ffmpeg.FS("readFile", "output.mp4");
+
+<<Flash message>>
+<express-flash>
+설치 : npm i express-flash
+app.use(flash()); - session에 연결해서 user에게 메세지를 남김
+사용 : req.flash("error", "message");
+messages라는 locals를 만들어줌 
