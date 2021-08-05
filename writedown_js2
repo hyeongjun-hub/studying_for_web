@@ -743,7 +743,7 @@ a.click();
     const ffmpeg = createFFmpeg({});
     await ffmpeg.load();
         사용자가 다른 소프트웨어를 사용할 것이기 때문에 await 
-    ffmpeg.FS("writeFile", "filename.webm", binary data) - ffmpeg의 가상의 세계에 파일을 생성
+    ffmpeg.FS("writeFile", "filename.webm", binary data function) - ffmpeg의 가상의 세계에 파일을 생성
     await ffmpeg.run("-i", "filename.webm", "-r", "60", "ouput.mp4")
         -초당 60프레임 mp4 인코딩 
     const mp4File = ffmpeg.FS("readFile", "output.mp4");
