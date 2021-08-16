@@ -1,0 +1,25 @@
+<<React>>
+<start> $ npx create-react-app something
+<jsx> : 리액트에서 사용되는 JavaScript의 확장문법
+
+<component> : HTML을 반환하는 함수 
+형식 : <Name property="something">
+    <property> : father component에서 child component로 보낼 수 있음
+    <child component> : argument로 부모 component의 prop을 받음
+
+*웹사이트에 동적데이터를 추가하는 법
+map : array.map(current => {return item})
+
+<propTypes> : prop의 형태를 설정
+
+<<class component>> : extends React.Component {}
+-react는 자동적으로 class compoenet의 render method를 실행한다
+<state> : object - data가 변하기 때문에 사용 
+사용 : state = {count : 0}
+    render() { return <> {this.state.count} </>}
+<event> - props로 onClick등을 사용
+<component life cycle> 
+*componentDidMount : component가 처음 render될 때 호출
+*componentDidUpdate : setState마다 호출
+*componenetWillUnmount : component가 죽을 때
+

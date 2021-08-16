@@ -2,7 +2,7 @@
 HTML에서의 삽입 위치 : body의 가장 마지막
     <script src="script.js"></script>
 
-* allert(something)
+* alert(something)
 * console.log(something) : console에 print해줌
 * camel case 작성법 : 소문자로 시작후 space대신 대문자로 시작
 

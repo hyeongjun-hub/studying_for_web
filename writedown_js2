@@ -846,7 +846,7 @@ webpack의 mode를 development가 아닌 production로 바꾸고 싶음
 development mode에서만 watch하도록 
     "dev:assets": "webpack --mode=development -w"
 
-<HEroku>
+<Heroku>
 create app
 Heroku에 backend를 업로드하는 방법 
 1. Heroku Git   
@@ -857,9 +857,14 @@ Heroku에 backend를 업로드하는 방법
 2. Github
 *Heroku는 배포를 하면 모든 프로젝트에 대해 새로운 서버를 만듦 
     => 기존의 collection 파일들이 없어짐
+
 <AWS>
-S3 
-IAM
+S3 - 실질적인 미디어 저장소
+IAM - S3의 권한 부여
+
+<mongo DB atlas>
+local에서 mongo의 역할
+
 <Multer S3> : AWS에 업로드 함
 npm i aws-sdk
  
