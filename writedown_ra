@@ -31,6 +31,15 @@ map : array.map(current => {return item})
 <.env>
 NODE_PATH = src : 기본적으로 src 파일을 보도록 
 
-<react-router-dom> : 간단한 컴포넌트 묶음
+<<react-router-dom>> : 간단한 컴포넌트 묶음
 $ yarn add react-router-dom
+import { HashRouter as Router, Route} from "react-router-dom" - #
+import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom"
+
 *fragment : <> something </>
+*Composition : 두 개 이상의 Route를 동시에 렌더링하는 방식
+<Redirect> : 해당하는 페이지가 하나도 없으면 redirect
+<Switch> : 한 번에 오직 하나의 Route만 Render하게 해줌(가장 첫번째 rendering)
+*css module .. 
+
+
