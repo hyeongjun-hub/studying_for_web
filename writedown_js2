@@ -710,21 +710,27 @@ fetch("url", {method:"POST"})
     상태코드를 보내야 함 : res.sendStatus(400)
     
 <<Recorder>>
-MediaDevices.getUserMedia(constraints) : navigator에서 카메라와 오디오를 가져다 줌
-    실행 시 시간이 걸리므로 promise나 await를 사용해야 함
+<마이크와 카메라를 쓰는 법>
+stream = navigator.MediaDevices.getUserMedia(constraints)
+: navigator에서 카메라와 오디오를 가져다 줌
+    - 실행 시 시간이 걸리므로 promise나 await를 사용해야 함
         *await를 사용하려면 regeneratorRuntime을 설치
-    constraint : { audio: true, video: true}
-    preview.srcObject = stream;
+    constraint : 오브젝트 { audio: true, video: true}
+    video.srcObject = stream; : JavaScript에서 video에 src를 주는 법
     *srcObject : video가 가질 수 있는 무언가 
-<MediaRecorder>
+<MediaRecorder> : 녹화 또는 녹음하는 법
 const recorder = new MediaRecorder(stream);
-recorder.start();
-recorder.stop()을 호출하면 dataavailable event가 발생됨, 
-    e는 data property를 받은 BlobEvent
-    handler : ondataavailable
+recorder.start();후
+recorder.stop();을 호출하면 dataavailable event가 발생됨, 미리 정의해놔야 함
+    recorder.ondataavailable = (e) => {};
+        e는 data property를 받은 BlobEvent
+        handler : ondataavailable
+        e.data 는 Blob
+        *Blob { size:, type:,}
 <URL.creatObjectURL(event.data)> : 브라우저 메모리에서만 가능한 URL을 만들어 줌
 이 URL은 파일을 가리키고 있음
 이 URL을 video.src에 저장하고 video.play를 하면 녹화되어 재생됨
+사용 : const Url = URL.creatObjectURL(e.data);
 *video.loop = true - 반복재생
 
 <download>
@@ -821,10 +827,12 @@ const json = await response.json();
  -> $ newCommentId: 123141;
 
  <<build backend>>
+ babel은 개발용도로 쓰였던 것 실질적인 서비스에서는 시간이 오래 걸림
+ => 모든 코드를 일반적인 javascript 코드로 바꿔야 함 => babel/cli
  <babel/cli>
  설치 : npm i --save-dev @babel/cli 
  사용 : script { "build:server": "babel src -d bulid"},
-        -d : build할 directory
+        -d 이후 : build할 directory
     => bulid 디렉토리에 init.js가 생김
 nodemon은 파일을 실행하고 그 파일이 모든걸 실행함
 babel은 src폴더를 빌드, 결과물은 build 폴더에 저장
@@ -835,7 +843,8 @@ script { "start": node build/init.js" }
 <Error fix>    
     *client폴더는 빌드안하게 하는 법
     *build한 코드가 async와 await를 사용할 수 있도록 하는 법
-    *build폴더에 pug파일들이 없음
+        -init에 regeneratorRuntime import
+    *build폴더에 pug파일들이 없음 하지만 괜찮음
         이유: views set에서 process.cwd()는 node를 실행한 위치, backend가 알아서 위치를 찾아감
         같은 이유로 .env파일을 찾아갈 수 있음
 
@@ -847,16 +856,19 @@ development mode에서만 watch하도록
     "dev:assets": "webpack --mode=development -w"
 
 <Heroku>
-create app
+정의 : 어플리케이션을 배포하면 바로 온 사이트로 서비스를 해주는 대표적인 PaaS서비스 
+*PaaS(Platform as a Service) : 클라우드에서 제공되는 완전한 개발 및 배포환경
+create app - app이름이 서비스주소가 됨
 Heroku에 backend를 업로드하는 방법 
 1. Heroku Git   
     Heroku는 오직 git history만 본다 - commit을 안하면 Heroku가 볼 수 없음
     - .gitignore에 있는 것들은 볼 수 없다(.env)
-    =>Heroku config vars
+        =>Heroku config vars
     Heroku는 random으로 port번호를 줌(process.env.PORT) 
 2. Github
 *Heroku는 배포를 하면 모든 프로젝트에 대해 새로운 서버를 만듦 
     => 기존의 collection 파일들이 없어짐
+deploy시 자동으로 npm build와 npm start를 실행 시켜줌 
 
 <AWS>
 S3 - 실질적인 미디어 저장소

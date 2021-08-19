@@ -40,6 +40,42 @@ import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-do
 *Composition : 두 개 이상의 Route를 동시에 렌더링하는 방식
 <Redirect> : 해당하는 페이지가 하나도 없으면 redirect
 <Switch> : 한 번에 오직 하나의 Route만 Render하게 해줌(가장 첫번째 rendering)
-*css module .. 
+*
 
+<css module>
+import styles from "./Header.module.css";
+className - randomized
 
+<styled Component>
+설치 : $ yarn add styled-componenet
+사용 : 
+    const List = styled.ul`
+        display: flex;
+    `
+    <List> blabla </List>
+
+<styled reset>
+import {createGlobalStyle} from "styled-componenet";
+import reset from "styled-reset";
+
+const GlobalStyles = createGlobalStyle`
+    ${reset};
+`
+export default GlobalStyles;
+App.js에 <GlobalStyles></GlobalStyles>
+
+<withRouter> : 다른 컴포넌트를 감싸는 컴포넌트
+export default withRouter(Header)
+감쌌기 때문에 Header는 props를 가질 수 있음
+
+<<data>>
+<Axios>
+설치 : $yarn add axios 
+정의 : Axios는 브라우저, Node.js를 위한 Promise API를 활용하는 HTTP 비동기 통신 라이브러리 
+특징 : 
+    1. 별도의 설치가 필요하지만 fetch에 비해 많은 기능 지원과 문법이 간소화 됨
+    2. axios의 인스턴스를 configure해줄 수 있음 
+    const api = axios.create({
+        baseURL: "",
+        params: {},
+    })
