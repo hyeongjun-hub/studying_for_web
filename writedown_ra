@@ -79,3 +79,23 @@ export default withRouter(Header)
         baseURL: "",
         params: {},
     })
+
+<<container presenter pattern>>
+ conatiner - data와 state를 가지고 api를 불러옴 
+ presenter - 그 데이터를 보여줌(style)
+
+<<api>>
+const api = axios.create({});
+export const moviesApi = {
+    nowPlaying: () => api.get("/"),
+    showDetail: (id) => api.get(`/tv/${id}`, {
+        params: {
+            append_to_response: "videos",
+        },
+    }),
+    search: (term) => api.get("/search/tv", {
+        params: { query: encodeURIComponent(term)},
+    }),
+}
+
+*router는 :id가 있으면 각 container props에 자동으로 할당함

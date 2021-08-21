@@ -855,7 +855,7 @@ webpack의 mode를 development가 아닌 production로 바꾸고 싶음
 development mode에서만 watch하도록 
     "dev:assets": "webpack --mode=development -w"
 
-<Heroku>
+<<Heroku>>
 정의 : 어플리케이션을 배포하면 바로 온 사이트로 서비스를 해주는 대표적인 PaaS서비스 
 *PaaS(Platform as a Service) : 클라우드에서 제공되는 완전한 개발 및 배포환경
 create app - app이름이 서비스주소가 됨
@@ -864,19 +864,54 @@ Heroku에 backend를 업로드하는 방법
     Heroku는 오직 git history만 본다 - commit을 안하면 Heroku가 볼 수 없음
     - .gitignore에 있는 것들은 볼 수 없다(.env)
         =>Heroku config vars
-    Heroku는 random으로 port번호를 줌(process.env.PORT) 
+            process.env.something이면 something만 작성하면 됨 
 2. Github
 *Heroku는 배포를 하면 모든 프로젝트에 대해 새로운 서버를 만듦 
     => 기존의 collection 파일들이 없어짐
 deploy시 자동으로 npm build와 npm start를 실행 시켜줌 
+Heroku는 random으로 port번호를 줌(process.env.PORT) 
 
-<AWS>
-S3 - 실질적인 미디어 저장소
-IAM - S3의 권한 부여
-
-<mongo DB atlas>
+<<mongo DB atlas>>
 local에서 mongo의 역할
+<create Clusters>
+    access from anywhere, but DB계정이름과 비밀번호를 알아야 연결되도록
+    계정이름과 비밀번호 생성, create Database User
+        어떻게 연결할지 결정 - mongoDB의 native drivers를 이용 
+        =>database URL이 생성됨 - .env의 DB_URL과 같음
 
-<Multer S3> : AWS에 업로드 함
-npm i aws-sdk
- 
+<<AWS>>
+<S3> - 실질적인 미디어 저장소
+create bucket
+    bucket name 생성
+    permission에서 ACLs는 가능하도록 설정
+<IAM> - S3의 권한 부여
+create User
+    API key 생성 
+    Programmatic access 체크 : 로그인 시 key ID와 secret key를 사용
+    => node.js 서버가 로그인 가능 
+    Next permission -> AmazonS3FullAccess로 파일에 대한 권한만 줌
+    finally, Access Key ID와 Secret access key를 단 한번만 공개
+    =>Heroku config vars에 저장 => heroku서버가 aws에 접근 할 수 있음
+
+<<Multer S3>> : AWS에 업로드 함
+설치 : $ npm i aws-sdk, $ npm i aws-sdk
+<aws-sdk>
+const s3 = new aws.S3({ 
+    credentials: {
+        accessKeyId: process.env.AWS_ID,
+        secretAccessKey: process.env.AWS_SECRET,
+    }
+})
+<multerS3>
+const multerUploader = multerS3({
+    s3: s3,
+    bucket: {bucket name}/videos,
+    acl: "public-read",
+})
+multer({})안에 storage: multerUploader를 설정
+file이 더이상 path가 아닌 location을 사용
+
+<NODE_ENV>
+process.env.NODE_ENV: heroku에서 "production"이라고 정의돼 있음
+const isHeroku = process.env.NODE_ENV === "production"으로 Heroku인지 구분가능
+
