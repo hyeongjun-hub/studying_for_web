@@ -140,3 +140,18 @@ Section.propTypes = {
 3. <Input onChange={updateTerm} />
 //container's updateTerm = (event) => {const {target:{value}}= event; this.setState({searchTerm: value})}
 props로 전달
+
+<<Deploy>>
+1. gh-pages
+설치 : $ yarn add gh-pages
+사용 : 
+    "scripts": {
+        "deploy": "gh-pahges -d build",
+        "predeploy": "yarn run build"
+    }
+    "homepage":"https://hyeongjun-hub.github.io/nomflix",
+
+
+2. netlify : frontend만 deploy해주는 웹사이트(static component)
+signup -> create a new site -> github -> authorize -> nomflix -> choose branch
+- push 할 때마다 yarn build, publish 실행하도록 
