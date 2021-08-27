@@ -10,6 +10,8 @@
 *웹사이트에 동적데이터를 추가하는 법
 map : array.map(current => {return item})
 
+
+
 <propTypes> : prop의 형태를 설정
 
 <<class component>> : extends React.Component {}
@@ -21,7 +23,15 @@ map : array.map(current => {return item})
 <component life cycle> 
 *componentDidMount : component가 처음 render될 때 호출
 *componentDidUpdate : setState마다 호출
-*componenetWillUnmount : component가 죽을 때
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.value !== this.props.value) {
+            doSomething();  
+        }
+    }
+*componentWillUnmount : component가 죽을 때
+
+<state>
+*<Something {...state}/>로 전달가능
 
 <<create react-app>>
 <npx> : 자동으로 update해줌
@@ -155,3 +165,8 @@ props로 전달
 2. netlify : frontend만 deploy해주는 웹사이트(static component)
 signup -> create a new site -> github -> authorize -> nomflix -> choose branch
 - push 할 때마다 yarn build, publish 실행하도록 
+
+<class component vs function component>
+class - this, render 같은 사용방법을 고려해야 함
+
+<<Hooks>> : react의 state machine에 연결하는 기본적인 방법

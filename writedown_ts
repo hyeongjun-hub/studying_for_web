@@ -1,0 +1,33 @@
+<<typescript>> : js의 super set 
+
+<type>
+const plus = (a:number, b:number) => a + b;
+console.log(plus("2",2)) -> error 
+
+<return type>
+const greet = (name:string, age:number): string => {
+    console.log(`Hello ${name} yo are ${age} years old`);
+} -> return이 없으므로 error
+
+<interface>
+const nico = {
+    name: 'Nicolas',
+    age:18, 
+    hungry:true
+}
+
+interface IHuman{
+    name:string;
+    age?:number; //optional value
+    hungry:boolean;
+}
+
+const helloToHuman = (human: IHuman) => {
+    console.log(`Hello ${human.name} you are ${humna.age} old`);
+}
+
+<<react + typescript>>
+<create-react-app>
+$ npx create-react-app somethingName --typescript
+
+<tsconfig.json> : typescript가 얼마나 strict할지 수정할 수 있음
