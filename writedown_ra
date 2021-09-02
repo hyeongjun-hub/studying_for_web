@@ -170,3 +170,48 @@ signup -> create a new site -> github -> authorize -> nomflix -> choose branch
 class - this, render 같은 사용방법을 고려해야 함
 
 <<Hooks>> : react의 state machine에 연결하는 기본적인 방법
+
+<Context & Redux>: Props를 계속해서 밑으로 전달하는 것 대신 데이터를 저장하는 공간
+Context장점: 간단한 react 어플리케이션에 적용할 수 있지만 파워풀한 방법
+Redux장점: 커다란 states와 많은 변화들이 있을 때 적합
+
+<useContext>
+context.js
+    export const someContext = react.creatContext();
+    const someContextProvider = ({children}) => {
+        const [user, setUser] = useState({
+            name: "형준",
+            age: "25",
+        })
+        const changeUser = () => setUser({...user, age: "26"})
+        return(
+        <someContext.provider value={{user, changeUser}}>{children}</someContext.Promvider>
+        )
+    }
+    export default seomContextProvider
+App.js 
+    function App = () => {
+        return(
+            <someContextProvider>
+                <Screen/>
+            </someContextProvider>
+        )
+    }
+Screen.js 
+    const Screen = () => {
+        const {user, changeUser} = useContext(someContext);
+        return(
+            <>
+                <button onClick={changeUser} /> 
+            </>
+        )
+    }
+
+<useReducer>: Reducer function을 다이렉트로 사용할 수 있게 함
+사용되는 때 : Component가 엄청난 수의 State를 가지고 있을 
+    때 무엇을 하고 있는지 정확하게 파악하기 위해 정리정돈 작업을 하는 것
+*reducer? 
+function reducer(state, action){
+    return - state를 <b>대체</b>할 object
+}
+ 

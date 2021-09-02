@@ -23,11 +23,11 @@ interface IHuman{
 }
 
 const helloToHuman = (human: IHuman) => {
-    console.log(`Hello ${human.name} you are ${humna.age} old`);
+    console.log(`Hello ${human.name} you are ${human.age} old`);
 }
 
 <<react + typescript>>
 <create-react-app>
-$ npx create-react-app somethingName --typescript
+$ npx create-react-app somethingName --template typescript
 
 <tsconfig.json> : typescript가 얼마나 strict할지 수정할 수 있음
