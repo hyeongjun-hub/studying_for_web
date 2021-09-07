@@ -215,3 +215,12 @@ function reducer(state, action){
     return - state를 <b>대체</b>할 object
 }
  
+ const [state, dispatch] = useReducer(reducer, initialState);
+    함수 reducer가 return하는 object가 state의 대체가 됨
+    <button onClick={()=>dispatch({type:"increase"})}>Add</button>
+    dispatch는 함수 reducer와 연결하는 용도, reducer의 두 번째 인자(action)를 인자로 가짐
+
+reducer라는 function는 다른 곳에 따로 둬도 됨
+
+<uuid>
+random number 생성
