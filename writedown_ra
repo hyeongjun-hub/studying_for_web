@@ -148,7 +148,7 @@ Section.propTypes = {
 <span role="img" aria-label="loading">asdf</span>
 
 3. <Input onChange={updateTerm} />
-//container's updateTerm = (event) => {const {target:{value}}= event; this.setState({searchTerm: value})}
+; container's updateTerm = (event) => {const {target:{value}}= event; this.setState({searchTerm: value})}
 props로 전달
 
 <<Deploy>>

@@ -160,3 +160,24 @@ animation: something 1s ease-in-out forwards
     *static webpage : only css html javascript (front-end만)
         branch이름을 필수적으로 gh-pages로 만듦 
         저장소는 public
+
+
+<<MASTER CSS>>
+<flex-box>
+1. align-self : child에서 자기 자신만 align 되도록
+    ex) .child:nth-child(2){align-self: center} -> 두 번째 child만 align center
+2. order - 순서를 바꿔야하는데 html을 바꿀 수 없을 때 
+    default : 0
+3. flex-wrap
+    flex-box의 default - width를 깨뜨려서라도 한 low에 있도록 만듬(nowrap)
+    flex-wrap: wrap - width를 깨뜨리지 않음
+  3.1. align-content : wrap해서 생겨난 중간 공간
+    default: flex-start
+4. flex-shrink : flex-box가 찌그러질 때
+    default : 1 
+    2면 두배 더 찌그러짐
+5. flex-grow : flex-box가 공간이 남을 때 차지하는 공간
+    default : 0
+6. flex-basis: element에게 처음 크기를 주는 것, 유동적으로 변함
+    - flex-glow에 민감함
+*flex-flow : flex-direction + flex-wrap
