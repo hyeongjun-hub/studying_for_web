@@ -17,7 +17,7 @@ HTML에서의 삽입 위치 : body의 가장 마지막
     var a;
 *주석처리
     //do not read this
-    /*it's also work */
+    /*it''s also work */
 변수의 종류
     String
         const what = "Something";
@@ -34,7 +34,8 @@ data 정렬
         age:32,
         gender:"LALALAL",
         favMovies: ["Allong the gods", "HarryPoter"]
-        favFood: [{name:"kimchi", fatty:false}]} //선언, 초기화
+        favFood: [{name:"kimchi", fatty:false}]
+        }; //선언, 초기화
 
 *console.log(Info.gender); //실행
 
@@ -100,9 +101,9 @@ else {
 }
 
 * === 는 조건을 확인하는 용도
-** && : and
-*** || : or
-**** !== : 같지않다
+* && : and
+* || : or
+* !== : 같지않다
 
     if else로 click과 default 나눠 색깔 정해주기
         1. css를 바꿔주는 방법 js_try.js참고
